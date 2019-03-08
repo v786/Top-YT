@@ -1,0 +1,5 @@
+//Command used to import csv to mongoDb
+mongoimport -d topyt -c things --type csv --file /Users/jahangiralikhan/Desktop/projects/Top-YT/data.csv --headerline
+
+//query 1
+db.things.find().limit(10).pretty()
