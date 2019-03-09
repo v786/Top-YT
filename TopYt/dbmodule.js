@@ -8,7 +8,10 @@ db.on('connect', function () {
 var test = db.collection(collections);
 console.log(test);
 
-
+db.things.find(function (err, docs) {
+  // docs is an array of all the documents in mycollection
+  console.log(docs);
+});
 exports.getThings = function (number, response) {
   db.things.find(function (err, docs) {
     // docs is an array of all the documents in mycollection
