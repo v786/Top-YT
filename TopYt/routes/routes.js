@@ -11,7 +11,8 @@ router.get('/', function (req, res, next) {
 
 
 router.get('/login', function (req, res) {
-  dbcon.getThings(10, res);
+  var num = parseInt(req.query.number);
+  dbcon.getThings(num, res);
 });
 router.get('/home', function (req, res) {
   res.set('Content-Type', 'text/plain');
