@@ -1,4 +1,8 @@
+# excludenode modules
 
-node_modules/**
+*/node_modules/**
 
 .vscode
+
+*db/
+.DS_Store
