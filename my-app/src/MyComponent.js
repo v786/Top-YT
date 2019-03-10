@@ -12,6 +12,16 @@ class MyComponent extends React.Component {
       isLoaded: false,
       items: []
     };
+    //alert(props.num);
+    this.state = { value: '' };
+
+
+    if (props.num > 100 || props.num == '') {
+      this.num = 5;
+    }
+    else {
+      this.num = props.num;
+    }
   }
 
   componentDidMount() {
@@ -33,8 +43,10 @@ class MyComponent extends React.Component {
             error
           });
         }
-      )
+      );
   }
+
+
 
   render() {
     const { error, isLoaded, items } = this.state;
@@ -44,29 +56,30 @@ class MyComponent extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <table className="table">
-          <thead className="thead-dark">
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Grade</th>
-              <th>Subscribers</th>
-            </tr>
-          </thead>
-
-          <tbody >
-            {items.map(item => (
-
-              <tr key={item.Rank}>
-                <th>{item.Rank} </th>
-                <th>{item["Channel name"]}</th>
-                <th>{item.Grade}</th>
-                <th>{item.Subscribers}</th>
+        <div className="col">
+          <table className="table">
+            <thead className="thead-dark">
+              <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Grade</th>
+                <th>Subscribers</th>
               </tr>
-            ))}
-          </tbody>
+            </thead>
 
-        </table>
+            <tbody >
+              {items.map(item => (
+
+                <tr key={item.Rank}>
+                  <th>{item.Rank} </th>
+                  <th>{item["Channel name"]}</th>
+                  <th>{item.Grade}</th>
+                  <th>{item.Subscribers}</th>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       );
     }
   }
