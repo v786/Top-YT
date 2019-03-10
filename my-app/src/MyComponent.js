@@ -15,7 +15,7 @@ class MyComponent extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/login?number=" + this.num)
+    fetch("http://localhost:3000/fetchrecords?number=" + this.num)
       .then(res => res.json())
       .then(
         (result) => {

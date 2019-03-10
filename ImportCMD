@@ -3,3 +3,10 @@ mongoimport -d topyt -c things --type csv --file /Users/jahangiralikhan/Desktop/
 
 //query 1
 db.things.find().limit(10).pretty()
+
+//To run express
+node app in TopYt dit
+
+//To run react
+npm start (in my-app)
+

@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 });
 
 
-router.get('/login', function (req, res) {
+router.get('/fetchrecords', function (req, res) {
   var num = parseInt(req.query.number);
   dbcon.getThings(num, res);
 });
