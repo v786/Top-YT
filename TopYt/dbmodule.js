@@ -9,9 +9,9 @@ var test = db.collection(collections);
 console.log(test);
 
 exports.getThings = function (limNum, response) {
-  db.things.find().limit(limNum, function (err, docs) {
+  db.things.find().sort({ Rank: 1 }).limit(limNum, function (err, docs) {
     // docs is an array of all the documents in mycollection
-    console.log(docs);
+    //console.log(docs);
     response.json(docs);
   });
 }

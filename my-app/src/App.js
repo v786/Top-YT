@@ -24,8 +24,7 @@ class App extends Component {
   handleSubmit(event) {
     this.value = this.state.value;
     event.preventDefault();
-    alert(this.value);
-    ReactDOM.render(<MyComponent num={this.value} />, document.getElementById("api"));
+    ReactDOM.render(<MyComponent num={this.state.value} />, document.getElementById("api"));
   }
 
   render() {
@@ -34,26 +33,26 @@ class App extends Component {
         <header className="App-header">
           Top You tube channels
         </header>
-
-        <form onSubmit={this.handleSubmit}>
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Number of records"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-            <div className="input-group-append">
-              <button className="btn btn-success" type="submit" value="Submit">Go</button>
+        <div className="col">
+          <form onSubmit={this.handleSubmit}>
+            <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Number of records"
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+              <div className="input-group-append">
+                <button className="btn btn-success" type="submit" value="Submit">Go</button>
+              </div>
             </div>
-          </div>
-        </form>
-
+          </form>
+        </div>
         <div id="api">
 
         </div>
-      </div>
+      </div >
 
     );
   }

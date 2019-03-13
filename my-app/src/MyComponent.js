@@ -14,8 +14,6 @@ class MyComponent extends React.Component {
     };
     //alert(props.num);
     this.state = { value: '' };
-
-
     if (props.num > 100 || props.num == '') {
       this.num = 5;
     }
