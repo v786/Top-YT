@@ -20,6 +20,9 @@ class MyComponent extends React.Component {
     else {
       this.num = props.num;
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +47,33 @@ class MyComponent extends React.Component {
       );
   }
 
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
 
+  handleSubmit(event) {
+    this.num = this.state.value;
+    event.preventDefault();
+    fetch("http://localhost:3000/fetchrecords?number=" + this.num)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      );
+  }
 
   render() {
     const { error, isLoaded, items } = this.state;
@@ -55,6 +84,24 @@ class MyComponent extends React.Component {
     } else {
       return (
         <div className="col">
+
+          <div className="col">
+            <form onSubmit={this.handleSubmit}>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Number of records"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+                <div className="input-group-append">
+                  <button className="btn btn-success" type="submit" value="Submit">Go</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
           <table className="table">
             <thead className="thead-dark">
               <tr>
